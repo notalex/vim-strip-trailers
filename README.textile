@@ -1,0 +1,14 @@
+bq. Trailing whitespaces make a lot of noise in a revision control system.
+This is a Vim script to highlight trailing whitespaces and then strip them.
+
+Usage:
+
+bc. <Leader>sw
+
+h4. Installation
+
+bq. If you don't have a preferred installation method, I recommend using "Vundle":https://github.com/gmarik/vundle
+
+With Vundle, you can simply add *Bundle 'notalex/vim-strip-trailers'* to your *.vimrc* and run
+
+bc. :BundleInstall
