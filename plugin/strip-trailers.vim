@@ -5,7 +5,7 @@
 noremap \sw :call <SID>strip_whitespaces()<cr>
 
 function! s:strip_whitespaces()
-  try
+  if search('\s\+$', 'n')
     highlight TrailingWhitespaces ctermbg=2
     match TrailingWhitespaces /\s\+$/
     redraw
@@ -13,7 +13,7 @@ function! s:strip_whitespaces()
     %s/\s\+$//
     match TrailingWhitespaces //
     echo 'Trailing whitespaces removed'
-  catch
+  else
     echo 'No trailing whitespaces found' 
-  endtry
+  endif
 endfunction
