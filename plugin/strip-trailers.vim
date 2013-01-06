@@ -1,5 +1,4 @@
-" Learning Vim plugin
-" Last Change: 18-06-2012
+" Strip Trailing Whitespaces
 " Maintainer:	Alex Johnson
 " License:	GPL(to be licensed)          
 
@@ -7,12 +6,12 @@ noremap \sw :call <SID>strip_whitespaces()<cr>
 
 function! s:strip_whitespaces()
   try
-    /\s\+$/
-    set hlsearch
+    highlight TrailingWhitespaces ctermbg=2
+    match TrailingWhitespaces /\s\+$/
     redraw
-    sleep 2
-    set nohlsearch
+    sleep 1
     %s/\s\+$//
+    match TrailingWhitespaces //
     echo 'Trailing whitespaces removed'
   catch
     echo 'No trailing whitespaces found' 
