@@ -19,3 +19,7 @@ function! s:strip_whitespaces()
     echo 'No trailing whitespaces found' 
   endif
 endfunction
+
+if exists('g:strip_whitespaces_on_save') && g:strip_whitespaces_on_save
+  autocmd! BufWritePre * :call <SID>strip_whitespaces()
+endif
