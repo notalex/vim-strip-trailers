@@ -6,20 +6,28 @@ noremap \sw :call <SID>HighlightAndStripWhitespaces()<cr>
 
 function! s:HighlightAndStripWhitespaces()
   if search('\s\+$', 'n')
-    normal! mq
     highlight TrailingWhitespaces ctermbg=2
     match TrailingWhitespaces /\s\+$/
     redraw
     sleep 1
-    %s/\s\+$//
+    call s:StripWhitespaces()
     match TrailingWhitespaces //
-    normal! `q
     echo 'Trailing whitespaces removed'
   else
     echo 'No trailing whitespaces found' 
   endif
 endfunction
 
+function! s:StripWhitespaces()
+  if search('\s\+$', 'n')
+    normal! mq
+
+    %s/\s\+$//
+
+    normal! `q
+  end
+endfunction
+
 if exists('g:strip_whitespaces_on_save') && g:strip_whitespaces_on_save
-  autocmd! BufWritePre * :call <SID>HighlightAndStripWhitespaces()
+  autocmd! BufWritePre * :call <SID>StripWhitespaces()
 endif
