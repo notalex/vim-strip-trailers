@@ -2,9 +2,9 @@
 " Maintainer:	Alex Johnson
 " License:	GPL(to be licensed)          
 
-noremap \sw :call <SID>strip_whitespaces()<cr>
+noremap \sw :call <SID>HighlightAndStripWhitespaces()<cr>
 
-function! s:strip_whitespaces()
+function! s:HighlightAndStripWhitespaces()
   if search('\s\+$', 'n')
     normal! mq
     highlight TrailingWhitespaces ctermbg=2
@@ -21,5 +21,5 @@ function! s:strip_whitespaces()
 endfunction
 
 if exists('g:strip_whitespaces_on_save') && g:strip_whitespaces_on_save
-  autocmd! BufWritePre * :call <SID>strip_whitespaces()
+  autocmd! BufWritePre * :call <SID>HighlightAndStripWhitespaces()
 endif
