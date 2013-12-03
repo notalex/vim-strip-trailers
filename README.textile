@@ -3,6 +3,12 @@ This is a Vim script to highlight trailing whitespaces and then strip them.
 
 Usage:
 
+One can place the following configuration in their .vimrc to remove the trailing whitespaces on file write:
+
+bc. let g:strip_whitespaces_on_save = 1
+
+Or one can manually invoke the script using the following keybinding:
+
 bc. <Leader>sw
 
 h4. Installation
